@@ -195,7 +195,7 @@ public:
 };
 
 int typeToInt(std::string type) {
-    std::string types[62] = {"NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "MYSTERY", "FIRE", "WATER", "GRASS", "ELECTRIC", "PSYCHIC", "ICE", "DRAGON", "DARK", "FAIRY", "MONKEY", "ANGRY", "BABY", "FRIEND", "GUYS", "LIQUID", "VIBE", "SONG", "SPACE", "FLUFFY", "SUS", "FURRY", "BAD", "ANCIENT", "SILLY", "STINKY", "SHARP", "MAGIC", "GENDER", "LITTLE", "CRAB", "DREAM", "RIGHT", "LEFT", "ZOOMER", "GAMER", "DANCE", "BORING", "UGLY", "GUN", "PIKACHU", "PRIME", "OHIO", "DEEZ NUTS", "NORMAL2", "BEAN", "BOOMER", "SMASH", "OU", "BALL", "SANS", "REVERSE", "TYPE"};
+    std::string types[62] = {"NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "MYSTERY", "FIRE", "WATER", "GRASS", "ELECTRIC", "PSYCHIC", "ICE", "DRAGON", "DARK", "FAIRY", "MONKEY", "ANGRY", "BABY", "FRIEND", "GUYS", "LIQUID", "VIBE", "SONG", "SPACE", "FLUFFY", "SUS", "FURRY", "BAD", "ANCIENT", "SILLY", "STINKY", "SHARP", "MAGIC", "GENDER", "LITTLE", "CRAB", "DREAM", "RIGHT", "LEFT", "ZOOMER", "GAMER", "DANCE", "BORING", "UGLY", "GUN", "PIKACHU", "PRIME", "OHIO", "DEEZNUTS", "NORMAL2", "BEAN", "BOOMER", "SMASH", "OU", "BALL", "SANS", "REVERSE", "TYPE"};
     transform(type.begin(), type.end(), type.begin(), ::toupper);
     for (int i = 0; i < 62; i++) {
         if (type == types[i]) return i;
@@ -209,7 +209,7 @@ bool contains(C&& c, T e) {
 };
 
 void display(std::array<double, 60> effectiveness) {
-    std::string types[62] = {"NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "MYSTERY", "FIRE", "WATER", "GRASS", "ELECTRIC", "PSYCHIC", "ICE", "DRAGON", "DARK", "FAIRY", "MONKEY", "ANGRY", "BABY", "FRIEND", "GUYS", "LIQUID", "VIBE", "SONG", "SPACE", "FLUFFY", "SUS", "FURRY", "BAD", "ANCIENT", "SILLY", "STINKY", "SHARP", "MAGIC", "GENDER", "LITTLE", "CRAB", "DREAM", "RIGHT", "LEFT", "ZOOMER", "GAMER", "DANCE", "BORING", "UGLY", "GUN", "PIKACHU", "PRIME", "OHIO", "DEEZ NUTS", "NORMAL2", "BEAN", "BOOMER", "SMASH", "OU", "BALL", "SANS", "REVERSE", "TYPE"};
+    std::string types[62] = {"NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "MYSTERY", "FIRE", "WATER", "GRASS", "ELECTRIC", "PSYCHIC", "ICE", "DRAGON", "DARK", "FAIRY", "MONKEY", "ANGRY", "BABY", "FRIEND", "GUYS", "LIQUID", "VIBE", "SONG", "SPACE", "FLUFFY", "SUS", "FURRY", "BAD", "ANCIENT", "SILLY", "STINKY", "SHARP", "MAGIC", "GENDER", "LITTLE", "CRAB", "DREAM", "RIGHT", "LEFT", "ZOOMER", "GAMER", "DANCE", "BORING", "UGLY", "GUN", "PIKACHU", "PRIME", "OHIO", "DEEZNUTS", "NORMAL2", "BEAN", "BOOMER", "SMASH", "OU", "BALL", "SANS", "REVERSE", "TYPE"};
     if (contains(effectiveness, 16)) {
         std::cout << "x16 effectiveness:" << std::endl;
         for (int i = 0; i < 60; i++) if (effectiveness[i] == 16) std::cout << types[i] << ", ";
