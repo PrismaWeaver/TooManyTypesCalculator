@@ -250,6 +250,11 @@ void display(std::array<double, 60> effectiveness) {
         for (int i = 0; i < 60; i++) if (effectiveness[i] == 0.0625) std::cout << types[i] << ", ";
         std::cout << "\n" << std::endl;
     }
+    if (contains(effectiveness, 0)) {
+        std::cout << "Immunity to:" << std::endl;
+        for (int i = 0; i < 60; i++) if (effectiveness[i] == 0) std::cout << types[i] << ", ";
+        std::cout << "\n" << std::endl;
+    }
     std::cout << "\n" << std::endl;
 }
 
