@@ -162,8 +162,14 @@ public:
     std::array<double, 60> dualType(int type1, int type2) {
         std::array<double, 60> result;
         if (type1 == 60 || type2 == 60) {
-            if (type1 == 60) for (int i = 0; i < 60; i++) result[i] = 1 / defChart[type2][i];
-            else for (int i = 0; i < 60; i++) result[i] = 1 / defChart[type1][i];
+            if (type1 == 60) for (int i = 0; i < 60; i++) {
+                if (defChart[type2][i] == 0) result[i] = 1;
+                else result[i] = 1 / defChart[type2][i];
+            }
+            else for (int i = 0; i < 60; i++) {
+                if (defChart[type1][i] == 0) result[i] = 1;
+                else result[i] = 1 / defChart[type1][i];
+            }
         }
         else if (type1 == 61 || type2 == 61) {
             if (type1 == 61) for (int i = 0; i < 60; i++) result[i] = pow(defChart[type2][i], 2);
@@ -178,9 +184,18 @@ public:
     std::array<double, 60> tripleType(int type1, int type2, int type3) {
         std::array<double, 60> result;
         if (type1 == 60 || type2 == 60 || type3 == 60) {
-            if (type1 == 60) for (int i = 0; i < 60; i++) result[i] = defChart[type2][i] / defChart[type3][i];
-            else if (type2 ==60) for (int i = 0; i < 60; i++) result[i] = defChart[type1][i] / defChart[type3][i];
-            else for (int i = 0; i < 60; i++) result[i] = defChart[type1][i] / defChart[type2][i];
+            if (type1 == 60) for (int i = 0; i < 60; i++) {
+                if (defChart[type2][i] * defChart[type3][i] == 0) result[i] = 1;
+                else result[i] = (1 / defChart[type2][i]) * (1 / defChart[type3][i]);
+            }
+            else if (type2 ==60) for (int i = 0; i < 60; i++) {
+                if (defChart[type1][i] * defChart[type3][i] == 0) result[i] = 1;
+                else result[i] = (1 / defChart[type1][i]) * (1 / defChart[type3][i]);
+            }
+            else for (int i = 0; i < 60; i++) {
+                if (defChart[type1][i] * defChart[type2][i] == 0) result[i] = 1;
+                else result[i] = (1 / defChart[type1][i]) * (1 / defChart[type2][i]);
+            }
         }
         else if (type1 == 61 || type2 == 61 || type3 == 61) {
             if (type1 == 61) for (int i = 0; i < 60; i++) result[i] = pow(defChart[type2][i] * defChart[type3][i], 2);
