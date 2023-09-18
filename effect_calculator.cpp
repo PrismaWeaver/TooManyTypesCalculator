@@ -185,15 +185,18 @@ public:
         std::array<double, 60> result;
         if (type1 == 60 || type2 == 60 || type3 == 60) {
             if (type1 == 60) for (int i = 0; i < 60; i++) {
-                if (defChart[type2][i] * defChart[type3][i] == 0) result[i] = 1;
+                if (defChart[type2][i] == 0) result[i] = 1 / defChart[type3][i] ;
+                else if (defChart[type3][i] == 0) result[i] = 1 / defChart[type2][i] ;
                 else result[i] = (1 / defChart[type2][i]) * (1 / defChart[type3][i]);
             }
-            else if (type2 ==60) for (int i = 0; i < 60; i++) {
-                if (defChart[type1][i] * defChart[type3][i] == 0) result[i] = 1;
+            else if (type2 == 60) for (int i = 0; i < 60; i++) {
+                if (defChart[type1][i] == 0) result[i] = 1 / defChart[type3][i] ;
+                else if (defChart[type3][i] == 0) result[i] = 1 / defChart[type1][i] ;
                 else result[i] = (1 / defChart[type1][i]) * (1 / defChart[type3][i]);
             }
             else for (int i = 0; i < 60; i++) {
-                if (defChart[type1][i] * defChart[type2][i] == 0) result[i] = 1;
+                if (defChart[type1][i] == 0) result[i] = 1 / defChart[type2][i] ;
+                else if (defChart[type2][i] == 0) result[i] = 1 / defChart[type1][i] ;
                 else result[i] = (1 / defChart[type1][i]) * (1 / defChart[type2][i]);
             }
         }
@@ -225,6 +228,7 @@ bool contains(C&& c, T e) {
 
 void display(std::array<double, 60> effectiveness) {
     std::string types[62] = {"NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "MYSTERY", "FIRE", "WATER", "GRASS", "ELECTRIC", "PSYCHIC", "ICE", "DRAGON", "DARK", "FAIRY", "MONKEY", "ANGRY", "BABY", "FRIEND", "GUYS", "LIQUID", "VIBE", "SONG", "SPACE", "FLUFFY", "SUS", "FURRY", "BAD", "ANCIENT", "SILLY", "STINKY", "SHARP", "MAGIC", "GENDER", "LITTLE", "CRAB", "DREAM", "RIGHT", "LEFT", "ZOOMER", "GAMER", "DANCE", "BORING", "UGLY", "GUN", "PIKACHU", "PRIME", "OHIO", "DEEZNUTS", "NORMAL2", "BEAN", "BOOMER", "SMASH", "OU", "BALL", "SANS", "REVERSE", "TYPE"};
+    std::cout << std::endl;
     if (contains(effectiveness, 16)) {
         std::cout << "x16 effectiveness:" << std::endl;
         for (int i = 0; i < 60; i++) if (effectiveness[i] == 16) std::cout << types[i] << ", ";
@@ -270,7 +274,7 @@ void display(std::array<double, 60> effectiveness) {
         for (int i = 0; i < 60; i++) if (effectiveness[i] == 0) std::cout << types[i] << ", ";
         std::cout << "\n" << std::endl;
     }
-    std::cout << "\n" << std::endl;
+    std::cout << std::endl;
 }
 
 main(int argc, char* argv[]) {
